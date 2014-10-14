@@ -1050,6 +1050,10 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
             var rootStripper = rootRouter.options.root && new RegExp("^" + rootRouter.options.root + "/");
 
             $(document).delegate("a", 'click', function(evt){
+            	if (rootRouter.options.ignore && rootRouter.options.ignore.indexOf($(this).attr('class')) > -1) {
+                    return true;
+                }
+                
                 if(history._hasPushState){
                     if(!evt.altKey && !evt.ctrlKey && !evt.metaKey && !evt.shiftKey && rootRouter.targetIsThisWindow(evt)){
                         var href = $(this).attr("href");
