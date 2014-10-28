@@ -1050,7 +1050,7 @@ define(['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/event
             var rootStripper = rootRouter.options.root && new RegExp("^" + rootRouter.options.root + "/");
 
             $(document).delegate("a", 'click', function(evt){
-            	if (rootRouter.options.ignore && rootRouter.options.ignore.indexOf($(this).attr('class')) > -1) {
+                if (rootRouter.options.ignore && $(this)[0].className.split(' ').some(function(c) { return rootRouter.options.ignore.indexOf(c) > -1})) {
                     return true;
                 }
                 
